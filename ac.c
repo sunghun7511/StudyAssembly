@@ -70,6 +70,7 @@ int main(int argc, char * argv[]){
 		printf("\n\nError on linking!\nExit code is %d\n", status);
 		exit(-1);
 	}
+	free(command);
 
 	puts("\n\nSuccess!\n");
 	exit(0);
