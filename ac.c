@@ -23,7 +23,8 @@ int main(int argc, char * argv[]){
 	size += sizeof(B) * sizeof(char);
 
 	size += sizeof(argv[1]) * sizeof(char);
-	
+	size += sizeof(char);
+
 	command = (char *)malloc(size);
 	if(!command){
 		printf("\n\n Error on nasm command malloc\n");
@@ -33,6 +34,7 @@ int main(int argc, char * argv[]){
 	strcpy(command, A);
 	strcat(command, argv[1]);
 	strcat(command, B);
+	strcat(command, "\x00");
 	
 	printf("\n\n Assemble command is : %s \n\n", command);
 
@@ -50,7 +52,8 @@ int main(int argc, char * argv[]){
 	size += sizeof(E) * sizeof(char);
 
 	size += sizeof(argv[1]) * sizeof(char) * 2;
-	
+	size += sizeof(char);
+
 	command = (char *)malloc(size);
 	if(!command){
 		printf("\n\n Error on ld command malloc\n");
@@ -62,6 +65,7 @@ int main(int argc, char * argv[]){
 	strcat(command, D);
 	strcat(command, argv[1]);
 	strcat(command, E);
+	strcat(command, "\x00");
 
 	printf("\n\n ld command is : %s \n\n", command);
 
